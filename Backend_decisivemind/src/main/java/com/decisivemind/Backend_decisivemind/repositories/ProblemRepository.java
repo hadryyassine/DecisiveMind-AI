@@ -1,8 +1,8 @@
 package com.decisivemind.Backend_decisivemind.repositories;
 
 import com.decisivemind.Backend_decisivemind.entities.Problem;
+import com.decisivemind.Backend_decisivemind.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.User;
 
 import java.util.List;
 import java.util.Optional;

@@ -20,6 +20,13 @@ public class Solution {
     @Column(nullable = false)
     private String solution;
 
+    @Column(nullable = false)
+    private String description;
+
+    @Column(nullable = false)
+    private String successpercentage;
+
+
     // getters and setters
 
 
@@ -53,6 +60,22 @@ public class Solution {
 
     public void setSolution(String solution) {
         this.solution = solution;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSuccessPercentage() {
+        return successpercentage;
+    }
+
+    public void setSuccessPercentage(String successpercentage) {
+        this.successpercentage = successpercentage;
     }
 
     // constructor

@@ -1,15 +1,19 @@
 package com.decisivemind.Backend_decisivemind.entities;
 
+import com.decisivemind.Backend_decisivemind.entities.audit.DateAudit;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends DateAudit {
 
 
     @Id
@@ -19,12 +23,12 @@ public class User {
     @NotBlank
     @Column(nullable = false, unique = true)
     @Size(max = 40)
-
     private String email;
 
-    @Column(nullable = false, unique = true)
     @NotBlank
+    @Size(max = 15)
     private String username;
+
 
     @Column(nullable = false)
     @NotBlank
@@ -45,6 +49,12 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Problem> problems = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
 
 
@@ -83,13 +93,6 @@ public class User {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getProfession() {
         return profession;
@@ -115,19 +118,32 @@ public class User {
         this.problems = problems;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public User() {
 
     }
 
-    public User(Long id, String email, String username, String password, String name, String profession, String organization) {
-        this.id = id;
-        this.email = email;
-        this.username = username;
-        this.password = password;
+    public User(String name, String username, String email, String password, String profession, String organization ) {
         this.name = name;
-        this.profession = profession;
-        this.organization = organization;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.profession=profession;
+        this.organization=organization;
     }
-
-
 }
