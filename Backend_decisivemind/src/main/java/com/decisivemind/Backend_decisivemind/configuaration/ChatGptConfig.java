@@ -5,7 +5,7 @@ public class ChatGptConfig {
 
     public static final String AUTHORIZATION = "Authorization";
     public static final String BEARER = "Bearer ";
-    public static final String API_KEY = "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";
+    public static final String API_KEY = "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";
     public static final String MODEL = "text-davinci-003";
     public static final Integer MAX_TOKEN = 300;
     public static final Double TEMPERATURE = 0.0;

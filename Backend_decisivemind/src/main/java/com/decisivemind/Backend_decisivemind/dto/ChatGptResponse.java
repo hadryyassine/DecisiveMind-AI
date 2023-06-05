@@ -13,5 +13,11 @@ public class ChatGptResponse implements Serializable {
     private String model;
     private LocalDate created;
     private List<Choice> choices;
+
+    public void cleanupResponse() {
+        for (Choice choice : choices) {
+            choice.setText(choice.getText().replace("\n", " "));
+        }
+    }
 }
 
