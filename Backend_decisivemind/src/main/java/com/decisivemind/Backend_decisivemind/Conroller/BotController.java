@@ -6,10 +6,7 @@ import com.decisivemind.Backend_decisivemind.dto.BotRequest;
 import com.decisivemind.Backend_decisivemind.dto.ChatGptResponse;
 import com.decisivemind.Backend_decisivemind.services.BotService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/bot")
@@ -18,8 +15,8 @@ public class BotController {
     private final BotService botService;
 
     @PostMapping("/send")
-    public ChatGptResponse sendMessage(@RequestBody BotRequest botRequest) {
-        return botService.askQuestion(botRequest);
+    public ChatGptResponse sendMessage(@RequestBody BotRequest botRequest, @RequestParam Long userId) {
+        return botService.askQuestion(botRequest, userId);
     }
 }
 

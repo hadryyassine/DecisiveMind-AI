@@ -6,5 +6,5 @@ import com.decisivemind.Backend_decisivemind.dto.ChatGptResponse;
 
 public interface BotService {
 
-    ChatGptResponse askQuestion(BotRequest botRequest);
+    ChatGptResponse askQuestion(BotRequest botRequest, Long userId);
 }
