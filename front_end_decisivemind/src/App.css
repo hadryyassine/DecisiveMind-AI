@@ -35,4 +35,18 @@
   to {
     transform: rotate(360deg);
   }
+
+  
+
+}
+
+
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.Form {
+  width: 100%;
+  max-width: 800px; 
 }
